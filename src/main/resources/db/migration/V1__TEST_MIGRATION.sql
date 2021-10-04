@@ -1,0 +1,5 @@
+CREATE TABLE test (
+    id BIGINT PRIMARY KEY
+);
+
+DROP TABLE test;
