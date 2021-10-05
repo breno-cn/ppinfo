@@ -2,6 +2,8 @@ package com.backend.ppinfo.controller;
 
 import com.backend.ppinfo.dto.data.BoardUserRequest;
 import com.backend.ppinfo.dto.data.BoardUserResponse;
+import com.backend.ppinfo.dto.data.JwtRequest;
+import com.backend.ppinfo.dto.data.JwtResponse;
 import com.backend.ppinfo.dto.mapper.BoardUserMapper;
 import com.backend.ppinfo.service.BoardUserService;
 import lombok.AllArgsConstructor;
@@ -32,5 +34,7 @@ public class BoardUserController {
                 .status(HttpStatus.CREATED)
                 .body(response);
     }
+
+
 
 }
