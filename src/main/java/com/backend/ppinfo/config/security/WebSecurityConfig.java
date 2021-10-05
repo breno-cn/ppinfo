@@ -48,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/user/register").permitAll()
                     .antMatchers(POST, "/board").authenticated()
+                    .antMatchers(POST, "/post/**").authenticated()
                 .and()
                     .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.backend.ppinfo.exception.error.ErrorCode.BOARD_NAME_ALREADY_EXISTS;
+import static com.backend.ppinfo.exception.error.ErrorCode.BOARD_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -19,6 +20,11 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     private final BoardUserService boardUserService;
+
+    public Board findById(Long id) {
+        return boardRepository.findById(id)
+                .orElseThrow(() -> new GeneralException(BOARD_NOT_FOUND));
+    }
 
     public List<Board> findAll() {
         return boardRepository.findAll();
