@@ -5,10 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -34,6 +33,14 @@ public class BoardUser {
     private LocalDateTime createdAt;
 
     private Boolean isBanned;
+
+    @OneToMany(mappedBy = "boardUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Board> boards;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+    }
 
     public Boolean isAccountNonLocked() {
         return !this.isBanned;

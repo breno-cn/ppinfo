@@ -10,7 +10,8 @@ public enum ErrorCode {
 
     GENERAL_ERROR("error.message.general-error"),
     USERNAME_ALREADY_EXISTS("error.message.username-already-exists"),
-    EMAIL_ALREADY_EXISTS("error.message.email-already-exists");
+    EMAIL_ALREADY_EXISTS("error.message.email-already-exists"),
+    BOARD_NAME_ALREADY_EXISTS("error.message.board-name-already-exists");
 
     private String errorMessage;
 

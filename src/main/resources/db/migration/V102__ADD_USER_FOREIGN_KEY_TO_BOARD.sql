@@ -1,0 +1,1 @@
+ALTER TABLE board ADD COLUMN board_user_id BIGINT REFERENCES board_user(id);

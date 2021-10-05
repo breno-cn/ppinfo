@@ -6,6 +6,7 @@ import com.backend.ppinfo.relational.repository.BoardUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ public class BoardUserService {
     private final BoardUserRepository boardUserRepository;
 
     private final PasswordEncoder passwordEncoder;
+
+    public BoardUser findByUsername(String username) {
+        return boardUserRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
+    }
 
     public BoardUser createUser(BoardUser boardUser) {
         if (boardUserRepository.checkIfUsernameExists(boardUser.getUsername())) {
