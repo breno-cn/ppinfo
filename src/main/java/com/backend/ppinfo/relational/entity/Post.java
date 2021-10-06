@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,5 +31,8 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private BoardUser boardUser;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.ALL)
+    List<Comment> comments;
 
 }
