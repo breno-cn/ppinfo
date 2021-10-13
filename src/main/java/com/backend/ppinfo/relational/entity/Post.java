@@ -35,4 +35,7 @@ public class Post {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.ALL)
     List<Comment> comments;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.ALL)
+    List<PostLike> postLikes;
+
 }
