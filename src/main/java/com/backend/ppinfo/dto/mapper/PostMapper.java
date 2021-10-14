@@ -20,6 +20,7 @@ public class PostMapper {
                 .content(post.getContent())
                 .createdAt(post.getCreatedAt())
                 .creator(boardUserMapper.entityToResponse(post.getBoardUser()))
+                .likes(post.getLikes())
                 .build();
     }
 

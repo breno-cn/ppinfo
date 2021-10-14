@@ -19,6 +19,8 @@ public class PostResponse {
 
     private String content;
 
+    private Long likes;
+
     private LocalDateTime createdAt;
 
     private BoardUserResponse creator;

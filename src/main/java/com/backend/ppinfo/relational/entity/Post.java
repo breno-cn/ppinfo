@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,6 +26,9 @@ public class Post {
     private String content;
 
     private LocalDateTime createdAt;
+
+    @Formula("(select count(*) from post_like pl where pl.post_id = id)")
+    private Long likes;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Board board;
