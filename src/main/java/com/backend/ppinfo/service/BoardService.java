@@ -42,6 +42,9 @@ public class BoardService {
     }
 
     public void followBoard(Long boardId, String username) {
-//        TODO: implement
+        var boardUser = boardUserService.findByUsername(username);
+        var board = boardRepository.findById(boardId)
+                .orElseThrow(() -> new GeneralException(BOARD_NOT_FOUND));
+
     }
 }

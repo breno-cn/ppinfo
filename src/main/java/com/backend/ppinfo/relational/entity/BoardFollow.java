@@ -1,11 +1,13 @@
 package com.backend.ppinfo.relational.entity;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@Data
 public class BoardFollow {
 
     @Id

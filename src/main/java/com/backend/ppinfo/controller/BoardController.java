@@ -4,6 +4,8 @@ import com.backend.ppinfo.dto.data.BoardRequest;
 import com.backend.ppinfo.dto.data.BoardResponse;
 import com.backend.ppinfo.dto.data.FeedResponse;
 import com.backend.ppinfo.dto.mapper.BoardMapper;
+import com.backend.ppinfo.relational.entity.BoardFollow;
+import com.backend.ppinfo.service.BoardFollowService;
 import com.backend.ppinfo.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class BoardController {
 
     private final BoardService boardService;
+
+    private final BoardFollowService boardFollowService;
 
     private final BoardMapper boardMapper;
 
@@ -56,7 +60,7 @@ public class BoardController {
                                             @PathVariable(name = "boardId") Long boardId) {
         var username = authentication.getName();
 
-        boardService.followBoard(boardId, username);
+        boardFollowService.followBoard(username, boardId);
 
         return ResponseEntity
                 .noContent()
