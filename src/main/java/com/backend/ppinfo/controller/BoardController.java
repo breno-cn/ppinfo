@@ -66,4 +66,18 @@ public class BoardController {
                 .noContent()
                 .build();
     }
+
+    @GetMapping(path = "/feed")
+    public ResponseEntity<FeedResponse> getFeed(Authentication authentication) {
+        var username = authentication.getName();
+        var boards = boardService.getBoardsFollowedByUser(username)
+                .stream()
+                .map(boardMapper::entityToResponse)
+                .collect(Collectors.toList());
+        var response = new FeedResponse(boards);
+
+        return ResponseEntity
+                .ok(response);
+    }
+
 }

@@ -41,10 +41,9 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
-    public void followBoard(Long boardId, String username) {
-        var boardUser = boardUserService.findByUsername(username);
-        var board = boardRepository.findById(boardId)
-                .orElseThrow(() -> new GeneralException(BOARD_NOT_FOUND));
+    public List<Board> getBoardsFollowedByUser(String username) {
+        var user = boardUserService.findByUsername(username);
 
+        return boardRepository.getBoardsFollowedByUser(user.getId());
     }
 }
