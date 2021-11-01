@@ -41,4 +41,7 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
+    public void followBoard(Long boardId, String username) {
+//        TODO: implement
+    }
 }

@@ -33,6 +33,9 @@ public class Board {
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Post> posts;
 
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<BoardFollow> boardFollows;
+
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();

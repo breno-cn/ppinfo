@@ -2,6 +2,7 @@ package com.backend.ppinfo.controller;
 
 import com.backend.ppinfo.dto.data.BoardRequest;
 import com.backend.ppinfo.dto.data.BoardResponse;
+import com.backend.ppinfo.dto.data.FeedResponse;
 import com.backend.ppinfo.dto.mapper.BoardMapper;
 import com.backend.ppinfo.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -50,4 +51,15 @@ public class BoardController {
                 .body(response);
     }
 
+    @PatchMapping(path = "/{boardId}")
+    public ResponseEntity<Void> followBoard(Authentication authentication,
+                                            @PathVariable(name = "boardId") Long boardId) {
+        var username = authentication.getName();
+
+        boardService.followBoard(boardId, username);
+
+        return ResponseEntity
+                .noContent()
+                .build();
+    }
 }
