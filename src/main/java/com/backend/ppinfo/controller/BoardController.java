@@ -55,7 +55,7 @@ public class BoardController {
                 .body(response);
     }
 
-    @PatchMapping(path = "/{boardId}")
+    @PatchMapping(path = "/follow/{boardId}")
     public ResponseEntity<Void> followBoard(Authentication authentication,
                                             @PathVariable(name = "boardId") Long boardId) {
         var username = authentication.getName();
