@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/user/register").permitAll()
                     .antMatchers(POST, "/board").authenticated()
-                    .antMatchers(PATCH, "/board/**").authenticated()
+                    .antMatchers(PATCH, "/board/follow/**").authenticated()
                     .antMatchers(POST, "/post/**").authenticated()
                     .antMatchers(POST, "/comment/**").authenticated()
                     .antMatchers(PATCH, "/like/**").authenticated()
